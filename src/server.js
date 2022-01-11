@@ -1,5 +1,6 @@
 const app = require('./app');
 const config = require('./config/app');
+const { logger } = require('./controllers/logger')
 
 
 let server = app.listen(config.serverPort, () => {
@@ -9,6 +10,7 @@ let server = app.listen(config.serverPort, () => {
 const exitHandler = () => {
     if (server) {
         server.close(() => {
+            logger.info('server closed')
             console.info('Server closed');
             process.exit(1);
         });
@@ -18,6 +20,8 @@ const exitHandler = () => {
 };
 
 const unexpectedErrorHandler = (error) => {
+    logger.error(`unexpected or unhandled rejection the cause server to shut down
+                 with error:${error}`)
     console.error(error);
     exitHandler();
 };

@@ -11,3 +11,8 @@ USER node
 RUN npm install
 
 COPY --chown=node:node . .
+
+ENV PORT=9090
+
+EXPOSE 9090
+CMD [ "npm", "run", "dev" ]

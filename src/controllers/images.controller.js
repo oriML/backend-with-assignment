@@ -1,10 +1,14 @@
 const catchAsync = require('../utils/catchAsync');
+const imgService = require('../services/imgService')
+
+// ------ fetch function. Sends the request automatically to custom catch errors function ------
 
 const getImages = catchAsync(async (req, res) => {
-    /**
-     * TODO CALL TO OUTSIDE API
-     * AND RETURN THE VALID RESPONSE
-     */
+
+    const images = await imgService.fetchImages()
+        
+    res.status(200).json(images);
+
 });
 
 module.exports = {
