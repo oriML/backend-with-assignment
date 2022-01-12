@@ -27,18 +27,18 @@ const fetchImages = async () => {
                 throw new Error('api couldnt fetch images. try again later')
             }
 
-            if( Array.isArray(res[0]) )//check if 'images' array request fulfilled
+            if( Array.isArray(res[0]) )//check if 'photos' array request fulfilled
             {
-                //if does, set the 'images' array with fulfilled data
-                imagesArray = res[0][0]
+                //if does, set the 'photos' array with fulfilled data
+                photosArray = res[0][0]
                
             }
             else  logger.error("api of 'photos' failed. path is in config file")
 
-            if( Array.isArray(res[1]) )//check if 'photos' array request fulfilled
+            if( Array.isArray(res[1]) )//check if 'images' array request fulfilled
             {
-                //if does, set the 'photos' array with fulfilled data too
-                photosArray = res[1][0]
+                //if does, set the 'images' array with fulfilled data too
+                imagesArray = res[1][0]
                 
             }
             else logger.error("api of 'images' failed. path is in config file")
